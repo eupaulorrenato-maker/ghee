@@ -245,11 +245,88 @@
       justify-content: center;
     }
 
+    /* Botão Hamburger Mobile (Idêntico ao Mobile de ghee.com.br) */
+    .ghee-mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--ghee-carmim);
+      padding: 6px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .ghee-mobile-cart-only {
+      display: none;
+    }
+    .ghee-mobile-drawer {
+      display: none;
+      background-color: var(--ghee-header-bg);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 14px 20px 18px;
+    }
+    .ghee-mobile-drawer.is-open {
+      display: block;
+    }
+    .ghee-mobile-drawer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ghee-mobile-drawer a {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #000000;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      padding: 4px 0;
+    }
+    .ghee-mobile-drawer a.is-active {
+      color: var(--ghee-carmim);
+    }
+
+    /* Cabeçalho interno do Card (empilhado no Desktop, lado a lado compacto no Mobile) */
+    .ghee-step-card__head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Barra Fixa Inferior no Mobile (Resumo ao Vivo enquanto escolhe nos 4 cards) */
+    .ghee-mobile-sticky-bar {
+      display: none;
+    }
+
     @media (max-width: 980px) {
-      .ghee-header { padding: 14px 20px; }
-      .ghee-header__inner { grid-template-columns: 1fr auto; }
+      .ghee-header { padding: 12px 16px; }
+      .ghee-header__inner {
+        grid-template-columns: 40px 1fr 40px;
+        gap: 8px;
+      }
       .ghee-header__nav { display: none; }
-      .ghee-header__logo { align-items: flex-start; padding: 0; }
+      .ghee-mobile-menu-btn { display: inline-flex; }
+      .ghee-mobile-cart-only {
+        display: inline-flex;
+        justify-content: flex-end;
+      }
+      .ghee-header__logo {
+        align-items: center;
+        text-align: center;
+        padding: 0;
+      }
+      .ghee-header__logo-title {
+        font-size: 1.25rem;
+      }
+      .ghee-header__logo-sub {
+        font-size: 0.75rem;
+      }
     }
 
     /* ==========================================================================
@@ -1088,6 +1165,352 @@
       transform: translateY(0);
     }
 
+    /* ==========================================================================
+       8. RESPONSIVIDADE MOBILE COMPLETA (SMARTPHONES & TABLETS)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      html, body {
+        overflow-x: hidden;
+      }
+
+      .ghee-page-container {
+        padding: 16px 14px 104px; /* Espaço extra inferior para a barra fixa mobile */
+      }
+
+      /* Sub-barra compacta no mobile */
+      .ghee-subbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+      .ghee-subbar__breadcrumb {
+        font-size: 0.82rem;
+        order: 1;
+      }
+      .ghee-subbar__contact {
+        font-size: 0.82rem;
+        order: 2;
+      }
+      .ghee-subbar__title {
+        width: 100%;
+        order: 3;
+        font-size: 1.32rem;
+        letter-spacing: 0.1em;
+        margin-top: 4px;
+      }
+
+      .ghee-intro-text {
+        font-size: 0.94rem;
+        line-height: 1.55;
+        margin-bottom: 22px;
+        text-align: center;
+      }
+
+      /* Cards da Calculadora no Mobile: Cabeçalho horizontal compacto + botões fáceis de tocar */
+      .ghee-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .ghee-step-card {
+        padding: 16px 14px;
+        align-items: stretch;
+        text-align: left;
+      }
+      .ghee-step-card__head {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(188, 29, 71, 0.15);
+      }
+      .ghee-step-Wait-illus {
+        height: 44px;
+        width: 44px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+      .ghee-step-Wait-illus svg {
+        width: 44px;
+        height: 44px;
+      }
+      .ghee-step-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 0.98rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+      .ghee-step-card__title {
+        font-size: 1.08rem;
+        margin: 0;
+        line-height: 1.2;
+      }
+      .ghee-step-card__title br {
+        display: none;
+      }
+
+      /* Alvos de toque de 44px no mobile */
+      .ghee-choice-btn {
+        min-height: 44px;
+        padding: 10px 12px;
+        font-size: 0.92rem;
+      }
+      .ghee-counter-line {
+        min-height: 46px;
+        padding: 8px 12px;
+      }
+      .ghee-stepper button {
+        width: 32px;
+        height: 32px;
+        font-size: 1.05rem;
+      }
+      .ghee-stepper input {
+        width: 38px;
+        font-size: 1rem; /* Evita auto-zoom no iOS Safari */
+      }
+      .ghee-mini-presets {
+        justify-content: space-between;
+        gap: 6px;
+      }
+      .ghee-mini-preset {
+        flex: 1;
+        text-align: center;
+        padding: 7px 4px;
+        font-size: 0.76rem;
+      }
+      .ghee-diet-pills {
+        justify-content: flex-start;
+        gap: 6px;
+        margin-top: 6px;
+      }
+      .ghee-diet-pill {
+        flex: 1;
+        text-align: center;
+        padding: 7px 6px;
+        font-size: 0.74rem;
+      }
+
+      /* Resultado e Métricas no Mobile */
+      .ghee-result-section {
+        padding-top: 24px;
+      }
+      .ghee-result-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+      .ghee-ocre-heading {
+        font-size: 1.38rem;
+      }
+      .ghee-result-meta {
+        font-size: 0.88rem;
+      }
+      .ghee-summary-metrics {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .ghee-metric {
+        text-align: left;
+      }
+      .ghee-metric:last-child {
+        text-align: right;
+      }
+      .ghee-metric__value {
+        font-size: 1.35rem;
+      }
+
+      /* Banner Pacote Oficial no Mobile */
+      .ghee-official-pkg-banner {
+        padding: 12px 14px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .ghee-official-pkg-banner__text {
+        font-size: 0.86rem;
+      }
+      .ghee-mode-pills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+      .ghee-mode-pills button {
+        padding: 9px 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        text-align: center;
+      }
+
+      /* Linhas de Pratos no Mobile */
+      .ghee-menu-cat-bar {
+        padding: 9px 14px;
+        font-size: 0.86rem;
+      }
+      .ghee-dish-item {
+        grid-template-columns: 1fr;
+        padding: 12px 14px;
+        gap: 10px;
+      }
+      .ghee-dish-item__name {
+        font-size: 0.96rem;
+      }
+      .ghee-dish-item__portion {
+        font-size: 0.8rem;
+      }
+      .ghee-dish-swap-select {
+        max-width: 100%;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.85rem;
+        padding: 4px 0;
+      }
+      .ghee-dish-item__right {
+        justify-content: space-between;
+        padding-top: 8px;
+        border-top: 1px dashed #EEEEEE;
+      }
+
+      /* Barra Adicionar Prato Extra no Mobile */
+      .ghee-extra-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px;
+        gap: 10px;
+      }
+      .ghee-extra-bar select {
+        min-width: 0;
+        width: 100%;
+        font-size: 1rem; /* Evita zoom no iOS */
+      }
+      .ghee-extra-bar .ghee-btn-signature {
+        width: 100%;
+      }
+
+      /* Checkout e Botões 100% Largura no Mobile */
+      .ghee-checkout-box {
+        padding: 18px 14px;
+        margin-bottom: 36px;
+      }
+      .ghee-logistics-field select,
+      .ghee-logistics-field input {
+        font-size: 1rem; /* Evita zoom no iOS */
+      }
+      .ghee-cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      .ghee-btn-signature {
+        width: 100%;
+        padding: 14px 16px;
+        font-size: 0.8rem;
+        letter-spacing: 1.8px;
+      }
+
+      /* Carrossel Deslizante (Swipe) para as Fotos de Categorias no Mobile */
+      .ghee-categories-showcase {
+        margin-bottom: 40px;
+      }
+      .ghee-photo-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 8px;
+      }
+      .ghee-photo-card {
+        flex: 0 0 64%;
+        max-width: 220px;
+        scroll-snap-align: start;
+      }
+
+      /* FAQ no Mobile */
+      .ghee-faq-title {
+        font-size: 1.45rem;
+      }
+      .ghee-faq-row summary {
+        padding: 13px 14px;
+        font-size: 0.92rem;
+        gap: 10px;
+      }
+      .ghee-faq-answer {
+        padding: 14px;
+        font-size: 0.9rem;
+      }
+
+      /* Barra Fixa Inferior no Mobile com Total ao Vivo */
+      .ghee-mobile-sticky-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #FFFFFF;
+        border-top: 1px solid var(--ghee-carmim);
+        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+        z-index: 990;
+      }
+      .ghee-mobile-sticky-bar__info {
+        display: flex;
+        flex-direction: column;
+      }
+      .ghee-mobile-sticky-bar__label {
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ghee-text-secondary);
+      }
+      .ghee-mobile-sticky-bar__price {
+        font-family: var(--font-editorial);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--ghee-carmim);
+        line-height: 1.1;
+      }
+      .ghee-mobile-sticky-bar__btn {
+        background-color: var(--ghee-carmim);
+        color: #FFFFFF;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 16px;
+        font-family: var(--font-editorial);
+        font-size: 0.76rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-decoration: none;
+      }
+
+      /* Sobe o botão flutuante do WhatsApp no mobile para não cobrir a barra fixa */
+      .ghee-wa-float {
+        bottom: 76px;
+        right: 14px;
+        width: 48px;
+        height: 48px;
+      }
+      .ghee-toast {
+        bottom: 134px;
+        right: 14px;
+        left: 14px;
+      }
+    }
+
     @media print {
       .ghee-header,
       .ghee-subbar,
@@ -1098,6 +1521,7 @@
       .ghee-categories-showcase,
       .ghee-faq-block,
       .ghee-wa-float,
+      .ghee-mobile-sticky-bar,
       .ghee-dish-swap-select,
       .ghee-stepper button {
         display: none !important;
@@ -1108,10 +1532,19 @@
 <body>
 
   <!-- ==========================================================================
-       1. HEADER IDÊNTICO AOS PRINTS DE GHEE.COM.BR
+       1. HEADER IDÊNTICO AOS PRINTS DE GHEE.COM.BR (DESKTOP & MOBILE)
        ========================================================================== -->
   <header class="ghee-header" role="banner">
     <div class="ghee-header__inner">
+      <!-- Botão Hamburger Mobile (Esquerda no Mobile) -->
+      <button type="button" class="ghee-mobile-menu-btn" id="ghee-mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
       <ul class="ghee-header__nav">
         <li><a href="https://ghee.com.br/">Eventos <span class="ghee-chevron">⌄</span></a></li>
         <li><a href="https://ghee.com.br/">Casamento</a></li>
@@ -1139,7 +1572,32 @@
           </a>
         </li>
       </ul>
+
+      <!-- Ícone de Carrinho Visível no Mobile (Direita no Mobile) -->
+      <div class="ghee-mobile-cart-only">
+        <a href="#ghee-checkout-anchor" class="ghee-cart-trigger" aria-label="Carrinho">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="ghee-cart-count" id="ghee-header-cart-count-mobile">8</span>
+        </a>
+      </div>
     </div>
+
+    <!-- Menu Gaveta Mobile -->
+    <nav class="ghee-mobile-drawer" id="ghee-mobile-drawer" aria-label="Menu Mobile">
+      <ul>
+        <li><a href="https://ghee.com.br/">Eventos</a></li>
+        <li><a href="https://ghee.com.br/">Casamento</a></li>
+        <li><a href="https://ghee.com.br/">Delivery</a></li>
+        <li><a href="#ghee-concierge-natal-reveillon" class="is-active">Natal &amp; Réveillon</a></li>
+        <li><a href="https://ghee.com.br/">Sobre</a></li>
+        <li><a href="https://ghee.com.br/">Blog</a></li>
+        <li><a href="https://ghee.com.br/">Contato</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- ==========================================================================
@@ -1166,19 +1624,20 @@
 
       <!-- CARD 1: Celebração -->
       <article class="ghee-step-card">
-        <div class="ghee-step-Wait-illus" aria-hidden="true">
-          <!-- Ilustração Line-Art Fina com Ponto Carmim (#BC1D47) -->
-          <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
-            <path d="M28 22h10l-2 18a6 6 0 0 1-6 0l-2-18z" />
-            <path d="M33 40v16M28 56h10" />
-            <path d="M44 25h10l-2 18a6 6 0 0 1-6 0l-2-18z" />
-            <path d="M49 43v13M44 56h10" />
-            <circle cx="40" cy="17" r="3.5" fill="#BC1D47" stroke="none" />
-          </svg>
+        <div class="ghee-step-card__head">
+          <div class="ghee-step-Wait-illus" aria-hidden="true">
+            <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
+              <path d="M28 22h10l-2 18a6 6 0 0 1-6 0l-2-18z" />
+              <path d="M33 40v16M28 56h10" />
+              <path d="M44 25h10l-2 18a6 6 0 0 1-6 0l-2-18z" />
+              <path d="M49 43v13M44 56h10" />
+              <circle cx="40" cy="17" r="3.5" fill="#BC1D47" stroke="none" />
+            </svg>
+          </div>
+          <div class="ghee-step-circle">1</div>
+          <h2 class="ghee-step-card__title">Escolha a<br />celebração</h2>
         </div>
-        <div class="ghee-step-circle">1</div>
-        <h2 class="ghee-step-card__title">Escolha a<br />celebração</h2>
 
         <div class="ghee-card-options">
           <button type="button" class="ghee-choice-btn is-active" data-occasion="natal">
@@ -1198,18 +1657,20 @@
 
       <!-- CARD 2: Convidados -->
       <article class="ghee-step-card">
-        <div class="ghee-step-Wait-illus" aria-hidden="true">
-          <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
-            <circle cx="40" cy="40" r="16" />
-            <circle cx="40" cy="40" r="11" stroke-dasharray="2 2" />
-            <path d="M18 28v24M16 28v8a2 2 0 0 0 4 0v-8" />
-            <path d="M62 28v24M62 28c3 3 3 10 0 12" />
-            <circle cx="46" cy="35" r="3.5" fill="#BC1D47" stroke="none" />
-          </svg>
+        <div class="ghee-step-card__head">
+          <div class="ghee-step-Wait-illus" aria-hidden="true">
+            <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
+              <circle cx="40" cy="40" r="16" />
+              <circle cx="40" cy="40" r="11" stroke-dasharray="2 2" />
+              <path d="M18 28v24M16 28v8a2 2 0 0 0 4 0v-8" />
+              <path d="M62 28v24M62 28c3 3 3 10 0 12" />
+              <circle cx="46" cy="35" r="3.5" fill="#BC1D47" stroke="none" />
+            </svg>
+          </div>
+          <div class="ghee-step-circle">2</div>
+          <h2 class="ghee-step-card__title">Informe os<br />convidados</h2>
         </div>
-        <div class="ghee-step-circle">2</div>
-        <h2 class="ghee-step-card__title">Informe os<br />convidados</h2>
 
         <div class="ghee-card-options">
           <div class="ghee-counter-line">
@@ -1248,17 +1709,19 @@
 
       <!-- CARD 3: Estilo de Serviço -->
       <article class="ghee-step-card">
-        <div class="ghee-step-Wait-illus" aria-hidden="true">
-          <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
-            <path d="M18 50h44" />
-            <path d="M22 50c0-11 8-19 18-19s18 8 18 19" />
-            <circle cx="40" cy="27" r="3.5" fill="#BC1D47" stroke="none" />
-            <path d="M24 54h32" />
-          </svg>
+        <div class="ghee-step-card__head">
+          <div class="ghee-step-Wait-illus" aria-hidden="true">
+            <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
+              <path d="M18 50h44" />
+              <path d="M22 50c0-11 8-19 18-19s18 8 18 19" />
+              <circle cx="40" cy="27" r="3.5" fill="#BC1D47" stroke="none" />
+              <path d="M24 54h32" />
+            </svg>
+          </div>
+          <div class="ghee-step-circle">3</div>
+          <h2 class="ghee-step-card__title">Formato da<br />recepção</h2>
         </div>
-        <div class="ghee-step-circle">3</div>
-        <h2 class="ghee-step-card__title">Formato da<br />recepção</h2>
 
         <div class="ghee-card-options">
           <button type="button" class="ghee-choice-btn is-active" data-style="mesa_posta">
@@ -1278,17 +1741,19 @@
 
       <!-- CARD 4: Preferência e Restrições -->
       <article class="ghee-step-card">
-        <div class="ghee-step-Wait-illus" aria-hidden="true">
-          <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
-            <path d="M26 48c6-14 22-14 28 0" />
-            <path d="M22 48h36l-4 8H26l-4-8z" />
-            <path d="M34 28c2-4 10-4 12 0" />
-            <circle cx="51" cy="34" r="3.5" fill="#BC1D47" stroke="none" />
-          </svg>
+        <div class="ghee-step-card__head">
+          <div class="ghee-step-Wait-illus" aria-hidden="true">
+            <svg viewBox="0 0 80 80" fill="none" stroke="#111111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="40" cy="40" r="34" stroke="#BC1D47" stroke-opacity="0.35" />
+              <path d="M26 48c6-14 22-14 28 0" />
+              <path d="M22 48h36l-4 8H26l-4-8z" />
+              <path d="M34 28c2-4 10-4 12 0" />
+              <circle cx="51" cy="34" r="3.5" fill="#BC1D47" stroke="none" />
+            </svg>
+          </div>
+          <div class="ghee-step-circle">4</div>
+          <h2 class="ghee-step-card__title">Perfil do<br />cardápio</h2>
         </div>
-        <div class="ghee-step-circle">4</div>
-        <h2 class="ghee-step-card__title">Perfil do<br />cardápio</h2>
 
         <div class="ghee-card-options">
           <button type="button" class="ghee-choice-btn is-active" data-protein-pref="classico">
@@ -1317,7 +1782,7 @@
     <!-- ========================================================================
          4. RESULTADO CALCULADO EM TEMPO REAL (ESTILO EDITORIAL GHEE)
          ======================================================================== -->
-    <section class="ghee-result-section" aria-label="Sugestão de Cardápio Calculada">
+    <section class="ghee-result-section" id="ghee-result-anchor" aria-label="Sugestão de Cardápio Calculada">
 
       <div class="ghee-result-header">
         <div class="ghee-result-header__left">
@@ -1503,6 +1968,17 @@
         </details>
       </div>
     </section>
+
+    <!-- Barra Fixa Mobile com Resumo ao Vivo -->
+    <div class="ghee-mobile-sticky-bar" id="ghee-mobile-sticky-bar">
+      <div class="ghee-mobile-sticky-bar__info">
+        <span class="ghee-mobile-sticky-bar__label" id="ghee-mobile-sticky-meta">6 convidados • 8 pratos</span>
+        <span class="ghee-mobile-sticky-bar__price" id="ghee-mobile-sticky-total">R$ 2.450,00</span>
+      </div>
+      <a href="#ghee-result-anchor" class="ghee-mobile-sticky-bar__btn" id="ghee-mobile-sticky-btn">
+        Ver Meu Menu ↓
+      </a>
+    </div>
 
     <div id="ghee-toast" class="ghee-toast" role="status" aria-live="polite"></div>
 
@@ -1914,6 +2390,17 @@
       const totalUnits = state.selectedItems.reduce(function (acc, item) { return acc + item.qty; }, 0);
       const cartCountEl = document.getElementById('ghee-header-cart-count');
       if (cartCountEl) cartCountEl.textContent = String(totalUnits);
+      const cartCountMobEl = document.getElementById('ghee-header-cart-count-mobile');
+      if (cartCountMobEl) cartCountMobEl.textContent = String(totalUnits);
+
+      const stickyMetaEl = document.getElementById('ghee-mobile-sticky-meta');
+      if (stickyMetaEl) {
+        stickyMetaEl.textContent = (state.adults + state.kids) + ' convidados • ' + totalUnits + ' itens';
+      }
+      const stickyTotalEl = document.getElementById('ghee-mobile-sticky-total');
+      if (stickyTotalEl) {
+        stickyTotalEl.textContent = formatBRL(totals.total);
+      }
 
       const container = document.getElementById('ghee-menu-items-container');
       container.innerHTML = '';
@@ -2234,6 +2721,24 @@
           if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       });
+
+      const mobToggle = document.getElementById('ghee-mobile-menu-toggle');
+      const mobDrawer = document.getElementById('ghee-mobile-drawer');
+      if (mobToggle && mobDrawer) {
+        mobToggle.addEventListener('click', function () {
+          const isOpen = mobDrawer.classList.toggle('is-open');
+          mobToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      const stickyBtn = document.getElementById('ghee-mobile-sticky-btn');
+      if (stickyBtn) {
+        stickyBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetEl = document.getElementById('ghee-result-anchor');
+          if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
 
     populateExtraSelect();
